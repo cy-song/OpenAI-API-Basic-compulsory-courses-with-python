@@ -1,0 +1,24 @@
+
+
+pip install gradio
+
+
+import gradio as gr
+
+def hellow(user__name):      #提供gradio的 interface 方法呼叫
+  return user__name + '哈囉'
+
+iface = gr.Interface(    #建立名稱為iface的 interface 物件
+            fn=hellow,
+            inputs='text',
+            outputs='text'
+  )
+
+
+
+iface.queue()        #share = 'true'
+iface.launch()       #debug = 'true'
+
+
+
+
