@@ -1,0 +1,23 @@
+import gradio as gr
+
+def chang(name,year, ifwestyear):      #提供gradio的 interface 方法呼叫
+  years= int(year)
+  msg =''
+  if ifwestyear == True:                        #true要大寫
+    years -= 1911
+    msg ='民國'
+  else:
+    years += 1911
+    msg = '西元'
+
+  return f'{name}哈囉，{year}年轉為{msg}年', years     #要提供2個回傳
+
+
+iface = gr.Interface(    #建立名稱為iface的 interface 物件
+            fn = chang,
+            inputs = ['text',gr.Number(label="年份"),'checkbox'],
+            outputs = ['label','number']
+  )           #.queue().launch()
+
+iface.queue()        #share = 'true'
+iface.launch()       #debug = 'true'
